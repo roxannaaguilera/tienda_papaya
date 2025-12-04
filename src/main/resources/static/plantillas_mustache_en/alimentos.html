@@ -1,0 +1,38 @@
+<div class="panel-root">
+    <div class="panel-title">Store Food List</div>
+
+    {{#array_alimentos}}
+        <article class="list-item" data-alimento-id="{{ID}}">
+
+            <img src="mostrar_imagen?id={{ID}}" 
+                alt="Product - {{NOMBRE}}" 
+                height="65px"
+                onerror="this.onerror=null;this.src='/imagenes_base/alimentos/default.jpg'" />
+
+            <div class="item-info">
+                <div class="title">{{NOMBRE}}</div>
+                <div class="meta">Price: {{PRECIO}} €</div>
+                <div class="meta">Weight: {{PESO}}</div>
+                <div class="meta">Category: {{CATEGORIA}}</div>
+                <div class="meta">Stock: {{CANTIDAD}}</div>
+                <div class="meta">{{DESCRIPCION}}</div>
+            </div>
+
+            <div class="item-actions">
+                <a href="#" class="link-btn" onclick="event.preventDefault(); alert('to be done...')">
+                    VIEW DETAILS
+                </a>
+                <button type="button" 
+                    class="primary-btn enlace_comprar_producto" 
+                    data-producto-id="{{ID}}">
+                    ADD TO CART
+                </button>
+            </div>
+
+        </article>
+    {{/array_alimentos}}
+
+    {{^array_alimentos}}
+        <div class="empty-state">No food items available.</div>
+    {{/array_alimentos}}
+</div>

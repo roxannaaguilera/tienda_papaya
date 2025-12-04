@@ -1,0 +1,47 @@
+<section class="seccion-productos-horizontal">
+	<div class="container-productos-horizontal">
+		<div class="productos-header-horizontal">
+			<h2>Los Más Vendidos</h2>
+		</div>
+		
+		 <!-- Botón scroll izquierda -->
+        <button class="scroll-btn scroll-btn-left" onclick="scrollProductos(-1)">‹</button>
+
+		<div class="productos-scroll-horizontal">
+			{{#array_alimentos}}
+			<article class="producto-card-horizontal" data-alimento-id="{{ID}}">
+
+				<div class="producto-imagen-horizontal">
+					<img src="mostrar_imagen?id={{ID}}"
+						alt="Producto - {{NOMBRE}}"
+						onerror="this.onerror=null;this.src='/imagenes_base/alimentos/default.jpg'" />
+				</div>
+
+				<div class="producto-info-horizontal">
+					<h3 class="producto-titulo-horizontal">{{NOMBRE}}</h3>
+					<div class="meta">Precio: {{PRECIO}} €</div>
+					<div class="meta">Peso: {{PESO}}</div>
+					<div class="meta">Categoría: {{NOMBRE_RUBRO}}</div>
+					<div class="meta">{{DESCRIPCION}}</div>
+					
+					<button type="button"
+						class="btn-anadir-horizontal enlace_comprar_producto"
+						data-producto-id="{{ID}}">
+						Añadir
+					</button>
+				</div>
+
+			</article>
+			{{/array_alimentos}}
+		</div>
+	
+		<button class="scroll-btn scroll-btn-right" onclick="scrollProductos(1)">›</button>
+	</div>
+
+	{{^array_alimentos}}
+	<div class="productos-vacio-horizontal">
+		<p>No hay alimentos disponibles.</p>
+	</div>
+	{{/array_alimentos}}
+</section>
+

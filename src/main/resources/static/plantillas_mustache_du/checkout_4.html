@@ -1,0 +1,53 @@
+<div>BESTELLUNG AUFGEBEN - SCHRITT 4</div>
+<div>Bestelluebersicht:</div>
+
+<br/>
+
+<!-- BESTELLTE PRODUKTE -->
+<div>Bestellte Produkte:</div>
+<div id="productos_pedido">
+    {{#alimentos}}
+        <div style="margin: 10px">
+            Name: {{NOMBRE}} <br>
+            <img src="mostrar_imagen?id={{ALIMENTO_ID}}" height="40px"/> <br>
+            Preis/Einheit: {{PRECIO}} <br>
+        </div>
+    {{/alimentos}}
+</div>
+
+<br/>
+
+<!-- DATEN VON SCHRITT 1 (KUNDE) -->
+<div>Kundeninformationen:</div>
+<div style="margin: 10px">
+    Vorname: {{nombreCompleto}} <br>
+    Nachname: {{apellidos}} <br>
+    Adresse: {{direccion}} <br>
+    Bundesland/Region: {{provincia}} <br>
+</div>
+
+<br/>
+
+<!-- DATEN VON SCHRITT 2 (VERSAND) -->
+<div>Versandinformationen:</div>
+<div style="margin: 10px">
+    Versandart: {{metodoDeEnvio}} <br>
+    Versandkosten: {{costoEnvio}} € <br>
+    Voraussichtliche Lieferzeit: {{tiempoEstimadoEntrega}} <br>
+</div>
+
+<br/>
+
+<!-- DATEN VON SCHRITT 3 (ZAHLUNG) -->
+<div>Zahlungsinformationen:</div>
+<div style="margin: 10px">
+    Kartentyp: {{tipoTarjeta}} <br>
+    Karteninhaber: {{titularTarjeta}} <br>
+    Kartennummer: {{numeroTarjeta}} <br>
+</div>
+
+<br/>
+
+<div>
+    <button style="padding: 10px" id="boton_confirmar_pedido">BESTAETIGEN</button>
+</div>

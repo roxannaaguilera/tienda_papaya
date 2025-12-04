@@ -1,0 +1,30 @@
+<div class="panel-root">
+    <div class="panel-title">Shopping Cart</div>
+
+    <div class="list">
+{{#.}}
+        <article class="list-item" data-alimento-id="{{ALIMENTO_ID}}">
+            <img src="mostrar_imagen?id={{ALIMENTO_ID}}" height="65px" /> <br>
+
+            <div class="item-info">
+                <div class="title">{{NOMBRE}}</div>
+                <div class="meta">Price: {{PRECIO}} &nbsp;·&nbsp;</div>
+                <div class="meta">Weight: {{PESO}}</div>
+                <div class="meta">Category: {{CATEGORIA}}</div>
+                <div class="meta">{{DESCRIPCION}}</div>
+            </div>
+
+            <div class="item-actions">
+                <button type="button" class="link-btn enlace-borrar-producto-carrito" data-libro-id="{{ALIMENTO_ID}}">
+                    Remove
+                </button>
+            </div>
+        </article>
+{{/.}}
+    </div>
+
+    <div style="text-align:center; margin-top:14px">
+        <a href="#" id="realizar_pedido" class="primary-btn">Place Order</a>
+    </div>
+
+</div>

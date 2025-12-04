@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Detalle del Pedido - Papaya Admin</title>
+<link rel="stylesheet" href="/css/admin-styles.css">
+<link rel="stylesheet" href="/css/pedidos-styles.css">
+<link rel="stylesheet" href="/css/pedido-detalle-styles.css">
+<link rel="icon" href="/imagenes_base/favicon/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<!-- Insertar menú común -->
+<div th:replace="~{fragments/general.html :: menu}"></div>
+
+<!-- Contenedor principal -->
+<div class="contenedor-detalle-pedido">
+    <!-- Header del detalle -->
+    <div class="detalle-header">
+        <div class="header-info">
+            <a href="obtenerPedidos" class="btn-volver">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Volver a Pedidos
+            </a>
+            <h1>Detalles del Pedido #<span th:text="${pedido.id}">001</span></h1>
+        </div>
+        
+        <!-- Selector de estado -->
+        <div class="estado-selector">
+            <label for="select_estado">Estado del Pedido:</label>
+            <input type="hidden" id="id_pedido" th:value="${pedido.id}" />
+            <select id="select_estado" th:field="${pedido.estado}" class="select-estado-custom">
+                <option th:each="e : ${estados}" th:text="${e.value}" th:value="${e.key}"></option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Grid de información -->
+    <div class="detalle-grid">
+        <!-- Columna izquierda -->
+        <div class="detalle-columna">
+            <!-- Card: Datos del destinatario -->
+            <div class="info-card">
+                <div class="card-header">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <h3>Datos del Destinatario</h3>
+                </div>
+                <div class="card-body">
+                    <div class="info-fila">
+                        <span class="info-label">Nombre completo:</span>
+                        <span class="info-valor" th:text="${pedido.nombreCompleto} + ' ' + ${pedido.apellidos}">Juan Pérez García</span>
+                    </div>
+                    <div class="info-fila">
+                        <span class="info-label">Email:</span>
+                        <span class="info-valor" th:text="${pedido.email}">cliente@email.com</span>
+                    </div>
+                    <div class="info-fila">
+                        <span class="info-label">Teléfono:</span>
+                        <span class="info-valor" th:text="${pedido.telefono}">+58 412 1234567</span>
+                    </div>
+                    <div class="info-fila">
+                        <span class="info-label">Dirección:</span>
+                        <span class="info-valor" th:text="${pedido.direccion}">Av. Principal, Edificio 123, Apto 4-B</span>
+                    </div>
+                    <div class="info-fila">
+                        <span class="info-label">Provincia:</span>
+                        <span class="info-valor" th:text="${pedido.provincia}">Caracas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card: Detalles del envío -->
+            <div class="info-card">
+                <div class="card-header">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="3" width="15" height="13"></rect>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                    </svg>
+                    <h3>Detalles del Envío</h3>
+                </div>
+                <div class="card-body">
+                    <div class="info-fila">
+                        <span class="info-label">Método de envío:</span>
+                        <span class="info-valor" th:text="${pedido.metodoDeEnvio}">Envío Express</span>
+                    </div>
+                    <div class="info-fila">
+                        <span class="info-label">Costo de envío:</span>
+                        <span class="info-valor info-precio" th:text="'$' + ${pedido.costoEnvio}">$5.00</span>
+                    </div>
+                    <div class="info-fila">
+                        <span class="info-label">Tiempo estimado:</span>
+                        <span class="info-valor" th:text="${pedido.tiempoEstimadoEntrega}">2-3 días hábiles</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card: Datos de pago -->
+            <div class="info-card">
+                <div class="card-header">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                    <h3>Datos de Pago</h3>
+                </div>
+                <div class="card-body">
+                    <div class="info-fila">
+                        <span class="info-label">Tipo de tarjeta:</span>
+                        <span class="info-valor" th:text="${pedido.tipoTarjeta}">Visa</span>
+                    </div>
+                    <div class="info-fila">
+                        <span class="info-label">Titular:</span>
+                        <span class="info-valor" th:text="${pedido.titularTarjeta}">Juan Pérez</span>
+                    </div>
+                    <div class="info-fila">
+                        <span class="info-label">Número de tarjeta:</span>
+                        <span class="info-valor tarjeta-numero" th:text="${pedido.numeroTarjeta}">**** **** **** 1234</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Columna derecha: Productos -->
+        <div class="detalle-columna">
+            <div class="info-card productos-card">
+                <div class="card-header">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <h3>Productos del Pedido</h3>
+                </div>
+                <div class="card-body productos-lista">
+                    <div class="producto-item" th:each="productoPedido : ${pedido.productosPedido}">
+                        <div class="producto-imagen">
+                            <img th:src="@{${'../mostrar_imagen?id=' + productoPedido.alimento.id}}" 
+                                 th:alt="${productoPedido.alimento.nombre}">
+                        </div>
+                        <div class="producto-info">
+                            <h4 th:text="${productoPedido.alimento.nombre}">Manzanas Rojas</h4>
+                            <div class="producto-detalles">
+                                <div class="detalle-item">
+                                    <span class="detalle-etiqueta">Precio/unidad:</span>
+                                    <span class="detalle-valor" th:text="'$' + ${productoPedido.alimento.precio}">$2.50</span>
+                                </div>
+                                <div class="detalle-item">
+                                    <span class="detalle-etiqueta">Cantidad:</span>
+                                    <span class="detalle-cantidad" th:text="${productoPedido.cantidad}">3</span>
+                                </div>
+                                <div class="detalle-item subtotal">
+                                    <span class="detalle-etiqueta">Subtotal:</span>
+                                    <span class="detalle-subtotal" th:text="'$' + ${productoPedido.alimento.precio * productoPedido.cantidad}">$7.50</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resumen del pedido -->
+                <div class="pedido-resumen">
+                    <div class="resumen-fila">
+                        <span>Subtotal productos:</span>
+                        <span class="resumen-valor">$<span id="subtotal-productos">0.00</span></span>
+                    </div>
+                    <div class="resumen-fila">
+                        <span>Costo de envío:</span>
+                        <span class="resumen-valor" th:text="'$' + ${pedido.costoEnvio}">$5.00</span>
+                    </div>
+                    <div class="resumen-fila resumen-total">
+                        <span>Total:</span>
+                        <span class="resumen-total-valor">$<span id="total-pedido">0.00</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="../librerias_js/jquery.js"></script>
+<script>
+$(document).ready(function() {
+    // Calcular totales
+    let subtotal = 0;
+    $('.detalle-subtotal').each(function() {
+        let valor = parseFloat($(this).text().replace('$', ''));
+        subtotal += valor;
+    });
+    $('#subtotal-productos').text(subtotal.toFixed(2));
+    
+    let costoEnvio = parseFloat($('.resumen-valor').eq(1).text().replace('$', ''));
+    let total = subtotal + costoEnvio;
+    $('#total-pedido').text(total.toFixed(2));
+    
+    // Cambio de estado
+    $("#select_estado").change(function(){
+        let estado = $("#select_estado").find(":selected").val();
+        let estadoTexto = $("#select_estado").find(":selected").text();
+        let idPedido = $("#id_pedido").val();
+        
+        if(confirm('¿Está seguro de cambiar el estado a "' + estadoTexto + '"?')) {
+            $.post("pedidosREST/actualizarEstadoPedido", {
+                id: idPedido,
+                estado: estado
+            }).done(function(res){
+                // Mostrar notificación de éxito
+                mostrarNotificacion('Estado actualizado correctamente', 'success');
+            }).fail(function(){
+                mostrarNotificacion('Error al actualizar el estado', 'error');
+            });
+        }
+    });
+    
+    // Función para mostrar notificaciones
+    function mostrarNotificacion(mensaje, tipo) {
+        let color = tipo === 'success' ? '#4caf50' : '#ff4444';
+        let notificacion = $('<div class="notificacion-flotante">')
+            .css({
+                'position': 'fixed',
+                'bottom': '30px',
+                'right': '30px',
+                'background': color,
+                'color': 'white',
+                'padding': '15px 25px',
+                'border-radius': '8px',
+                'box-shadow': '0 4px 20px rgba(0,0,0,0.3)',
+                'z-index': '10000',
+                'font-weight': '600'
+            })
+            .text(mensaje)
+            .appendTo('body')
+            .fadeIn(300);
+        
+        setTimeout(function() {
+            notificacion.fadeOut(300, function() {
+                $(this).remove();
+            });
+        }, 3000);
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Gestión de Pedidos - Papaya Admin</title>
+<link rel="stylesheet" href="/css/admin-styles.css">
+<link rel="stylesheet" href="/css/pedidos-styles.css">
+<link rel="icon" href="/imagenes_base/favicon/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<!-- Insertar menú común -->
+<div th:replace="~{fragments/general.html :: menu}"></div>
+
+<!-- Contenedor principal -->
+<div class="contenedor-admin">
+    <!-- Header de la sección -->
+    <div class="seccion-header">
+        <div>
+            <h1>Gestión de Pedidos</h1>
+            <p class="seccion-subtitle">Listado de pedidos realizados</p>
+        </div>
+        <div class="pedidos-stats">
+            <div class="stat-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <div>
+                    <span class="stat-numero" th:text="${#lists.size(pedidos)}">0</span>
+                    <span class="stat-label">Total</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Grid de pedidos -->
+    <div class="grid-pedidos">
+        <div class="pedido-card" th:each="pedido : ${pedidos}">
+            <!-- Header del pedido -->
+            <div class="pedido-header">
+                <div class="pedido-id">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                    <span>Pedido #<span th:text="${pedido.id}">001</span></span>
+                </div>
+                <div class="pedido-estado" th:classappend="${pedido.estado == 'Entregado'} ? 'estado-entregado' : (${pedido.estado == 'En proceso'} ? 'estado-proceso' : 'estado-pendiente')">
+                    <span th:text="${pedido.estado}">Pendiente</span>
+                </div>
+            </div>
+            
+            <!-- Información del cliente -->
+            <div class="pedido-seccion">
+                <h4 class="seccion-titulo-mini">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    Cliente
+                </h4>
+                <div class="info-detalle">
+                    <strong th:text="${pedido.nombreCompleto} + ' ' + ${pedido.apellidos}">Juan Pérez</strong>
+                </div>
+            </div>
+            
+            <!-- Contacto -->
+            <div class="pedido-seccion">
+                <h4 class="seccion-titulo-mini">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    Contacto
+                </h4>
+                <div class="info-row">
+                    <div class="info-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span th:text="${pedido.email}">cliente@email.com</span>
+                    </div>
+                    <div class="info-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        <span th:text="${pedido.telefono}">+58 412 1234567</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dirección de envío -->
+            <div class="pedido-seccion">
+                <h4 class="seccion-titulo-mini">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Dirección de Envío
+                </h4>
+                <div class="info-detalle">
+                    <span th:text="${pedido.direccion}">Av. Principal, Edificio 123</span>,
+                    <span th:text="${pedido.provincia}">Caracas</span>
+                </div>
+            </div>
+            
+            <!-- Método de envío -->
+            <div class="pedido-seccion">
+                <h4 class="seccion-titulo-mini">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="3" width="15" height="13"></rect>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                    </svg>
+                    Método de Envío
+                </h4>
+                <div class="envio-info">
+                    <div class="envio-detalle">
+                        <strong th:text="${pedido.metodoDeEnvio}">Envío Express</strong>
+                        <span class="envio-costo" th:text="'$' + ${pedido.costoEnvio}">$5.00</span>
+                    </div>
+                    <div class="envio-tiempo">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span th:text="${pedido.tiempoEstimadoEntrega}">2-3 días</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Acción -->
+            <div class="pedido-accion">
+                <a th:href="@{${'verDetallesPedido?id=' + pedido.id}}" class="btn-ver-detalles">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    Ver Detalles Completos
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mensaje si no hay pedidos -->
+    <div class="mensaje-vacio" th:if="${#lists.isEmpty(pedidos)}">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <h3>No hay pedidos registrados</h3>
+        <p>Los pedidos aparecerán aquí cuando los clientes realicen compras</p>
+    </div>
+</div>
+
+</body>
+</html>

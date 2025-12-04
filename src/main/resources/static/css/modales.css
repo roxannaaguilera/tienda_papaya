@@ -1,0 +1,724 @@
+/* ============================================
+   ESTILOS PARA MODALES DE LOGIN Y REGISTRO
+   ============================================ */
+
+/* Modal overlay */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Modal content */
+.modal-content {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 0;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 10px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: slideIn 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Botón cerrar */
+.close {
+    color: #999;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 32px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.close:hover,
+.close:focus {
+    color: #2d2d2d;
+    background: #f5f5f5;
+    transform: rotate(90deg);
+}
+
+/* Header del modal */
+.modal-header {
+    padding: 40px 40px 30px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.modal-header h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #2d2d2d;
+    margin-bottom: 8px;
+}
+
+.modal-header p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Formulario del modal */
+.modal-form {
+    padding: 30px 40px;
+}
+
+/* Grupos de formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d2d2d;
+    margin-bottom: 8px;
+}
+
+.form-group label svg {
+    color:#ffd43e;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color:#ffd43e;
+    box-shadow: 0 0 0 4px #ffd43e;
+
+}
+
+.form-group input::placeholder {
+    color: #999;
+}
+
+/* Opciones del formulario */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color:#ffd43e;
+}
+
+.checkbox-label span {
+    user-select: none;
+}
+
+.checkbox-label a {
+    color: #eb8124;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.checkbox-label a:hover {
+    text-decoration: underline;
+}
+
+.link-recuperar {
+    color: #eb8124;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.link-recuperar:hover {
+    color: #c92026;
+    text-decoration: underline;
+}
+
+/* Botón submit */
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background: #eb8124;
+    color: #2d2d2d;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px #eb8124;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(254, 212, 85, 0.5);
+    background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+/* Footer del modal */
+.modal-footer {
+    padding: 20px 40px 40px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+}
+
+.modal-footer p {
+    color: #666;
+    font-size: 14px;
+}
+
+.modal-footer a {
+    color: #eb8124;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.modal-footer a:hover {
+    color: #c92026;
+    text-decoration: underline;
+}
+
+/* Validación de formularios */
+.form-group input:invalid:not(:placeholder-shown) {
+    border-color: #ff4444;
+}
+
+.form-group input:valid:not(:placeholder-shown) {
+    border-color:#ffd43e;
+}
+
+/* Mensaje de error */
+.error-message {
+    color: #ff4444;
+    font-size: 13px;
+    margin-top: 5px;
+    display: none;
+}
+
+.form-group.error .error-message {
+    display: block;
+}
+
+.form-group.error input {
+    border-color: #ff4444;
+}
+
+/* Loading state */
+.btn-submit.loading {
+    pointer-events: none;
+    opacity: 0.7;
+    position: relative;
+}
+
+.btn-submit.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 3px solid #2d2d2d;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .modal-content {
+        width: 95%;
+        border-radius: 15px;
+    }
+    
+    .modal-header {
+        padding: 30px 25px 20px;
+    }
+    
+    .modal-header h2 {
+        font-size: 24px;
+    }
+    
+    .modal-form {
+        padding: 20px 25px;
+    }
+    
+    .modal-footer {
+        padding: 15px 25px 30px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .close {
+        top: 15px;
+        right: 15px;
+        font-size: 28px;
+    }
+}
+
+/* Scrollbar personalizado para el modal */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background:#eb8124;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #eb8124;
+}
+/* ============================================
+   ESTILOS PARA EL CARRITO DE LA COMPRA
+   ============================================ */
+
+/* Modal del carrito - mismo ancho que otros modales pero un poco más grande */
+#modal_carrito .modal-content {
+    max-width: 650px;
+}
+
+/* Header del carrito - mismo estilo centrado */
+#modal_carrito .modal-header {
+    padding: 40px 40px 30px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+}
+
+#modal_carrito .modal-header h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #2d2d2d;
+    margin: 0;
+}
+
+/* Botón cerrar del carrito - mismo estilo que .close */
+#modal_carrito .modal-close {
+    color: #999;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 32px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+#modal_carrito .modal-close:hover,
+#modal_carrito .modal-close:focus {
+    color: #2d2d2d;
+    background: #f5f5f5;
+    transform: rotate(90deg);
+}
+
+#modal_carrito .modal-close svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Cuerpo del modal - mismo padding que modal-form */
+#modal_carrito .modal-body {
+    padding: 30px 40px;
+}
+
+/* Lista de productos */
+#modal_carrito .list {
+    max-height: 400px;
+    overflow-y: auto;
+    margin: -10px -20px;
+    padding: 10px 20px;
+}
+
+/* Item del carrito - diseño similar a form-group */
+#modal_carrito .list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background: #ffffff;
+}
+
+#modal_carrito .list-item:hover {
+    border-color:#ffd43e;
+    box-shadow: 0 2px 10px #ffd43e;
+}
+
+#modal_carrito .list-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Imagen del producto */
+#modal_carrito .list-item img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    flex-shrink: 0;
+}
+
+/* Información del producto */
+#modal_carrito .item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#modal_carrito .item-info .title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2d2d2d;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+#modal_carrito .item-info .meta {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+}
+
+#modal_carrito .item-info .meta:first-of-type {
+    font-size: 15px;
+    font-weight: 700;
+    color: #eb8124;
+    margin-top: 2px;
+}
+
+/* Acciones del item */
+#modal_carrito .item-actions {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 5px;
+}
+
+#modal_carrito .link-btn {
+    background: none;
+    border: none;
+    color: #ff4444;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#modal_carrito .link-btn:hover {
+    background-color: #fff5f5;
+    color: #cc0000;
+}
+
+/* Footer del carrito - mismo estilo que otros modales */
+#modal_carrito .modal-footer {
+    padding: 20px 40px 40px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* Botón realizar pedido - mismo estilo que btn-submit pero con colores naranjas */
+#modal_carrito .primary-btn {
+    width: 100%;
+    padding: 15px;
+    background: #eb8124;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px #eb8124;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#modal_carrito .primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px #eb8124;
+    background: #eb8124;
+}
+
+#modal_carrito .primary-btn:active {
+    transform: translateY(0);
+}
+
+/* Estado de carga del botón */
+#modal_carrito .primary-btn.loading {
+    pointer-events: none;
+    opacity: 0.7;
+    position: relative;
+}
+
+#modal_carrito .primary-btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 3px solid white;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+}
+
+/* Carrito vacío */
+#modal_carrito .carrito-vacio {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+}
+
+#modal_carrito .carrito-vacio svg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+#modal_carrito .carrito-vacio p {
+    font-size: 16px;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Scrollbar personalizado - mismo estilo que modal-content */
+#modal_carrito .list::-webkit-scrollbar {
+    width: 8px;
+}
+
+#modal_carrito .list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#modal_carrito .list::-webkit-scrollbar-thumb {
+    background:#eb8124;
+    border-radius: 10px;
+}
+
+#modal_carrito .list::-webkit-scrollbar-thumb:hover {
+    background:#eb8124;
+}
+
+/* Animación de entrada para items */
+#modal_carrito .list-item {
+    animation: slideInItem 0.3s ease;
+}
+
+@keyframes slideInItem {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive - mismas breakpoints que otros modales */
+@media (max-width: 640px) {
+    #modal_carrito .modal-content {
+        width: 95%;
+        border-radius: 15px;
+    }
+    
+    #modal_carrito .modal-header {
+        padding: 30px 25px 20px;
+    }
+    
+    #modal_carrito .modal-header h2 {
+        font-size: 24px;
+    }
+    
+    #modal_carrito .modal-body {
+        padding: 20px 25px;
+    }
+    
+    #modal_carrito .modal-footer {
+        padding: 15px 25px 30px;
+    }
+    
+    #modal_carrito .list {
+        max-height: 300px;
+    }
+    
+    #modal_carrito .list-item {
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    #modal_carrito .list-item img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    #modal_carrito .item-info .title {
+        font-size: 15px;
+    }
+    
+    #modal_carrito .item-info .meta {
+        font-size: 12px;
+    }
+    
+    #modal_carrito .modal-close {
+        top: 15px;
+        right: 15px;
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    #modal_carrito .list-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    #modal_carrito .list-item img {
+        width: 100%;
+        height: 150px;
+        max-width: 200px;
+    }
+    
+    #modal_carrito .item-info {
+        width: 100%;
+    }
+    
+    #modal_carrito .item-actions {
+        width: 100%;
+    }
+    
+    #modal_carrito .link-btn {
+        width: 100%;
+        padding: 8px;
+    }
+}
+
+/* Efecto al eliminar item */
+#modal_carrito .list-item.removing {
+    animation: slideOutItem 0.3s ease forwards;
+}
+
+@keyframes slideOutItem {
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+        height: 0;
+        padding: 0;
+        margin: 0;
+        border: 0;
+    }
+}

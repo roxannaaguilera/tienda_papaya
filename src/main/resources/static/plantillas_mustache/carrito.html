@@ -1,0 +1,48 @@
+<div id="modal_carrito" class="modal show">
+	<div class="modal-content">
+		<!-- Header del modal -->
+		<div class="modal-header">
+			<h2>Carrito de la compra</h2>
+			<button class="modal-close" id="close_carrito">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<line x1="18" y1="6" x2="6" y2="18"></line>
+					<line x1="6" y1="6" x2="18" y2="18"></line>
+				</svg>
+			</button>
+		</div>
+
+		<!-- Cuerpo del modal -->
+		<div class="modal-body">
+			<div class="list">
+				{{#.}}
+				<article class="list-item" data-alimento-id="{{ALIMENTO_ID}}">
+					<img src="mostrar_imagen?id={{ALIMENTO_ID}}" height="65px" />
+
+					<div class="item-info">
+						<div class="title">{{NOMBRE}}</div>
+						<div class="meta">Precio: {{PRECIO}} €</div>
+						<div class="meta">Peso: {{PESO}}</div>
+						<div class="meta">Categoría: {{CATEGORIA}}</div>
+						<div class="meta">{{DESCRIPCION}}</div>
+					</div>
+
+					<div class="item-actions">
+						<button type="button" 
+								class="link-btn enlace-borrar-producto-carrito" 
+								id-libro="{{ALIMENTO_ID}}">
+							Borrar
+						</button>
+					</div>
+				</article>
+				{{/.}}
+			</div>
+		</div>
+
+		<!-- Footer del modal -->
+		<div class="modal-footer">
+			<button id="realizar_pedido" class="primary-btn">
+				Realizar pedido
+			</button>
+		</div>
+	</div>
+</div>

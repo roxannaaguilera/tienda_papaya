@@ -1,0 +1,29 @@
+<div>Geben Sie Ihre Daten zur Registrierung ein:</div>
+
+<form id="form_registro">
+    Vorname: <input type="text" id="nombre" required
+    pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ]+" minlength="2" maxlength="10"
+    title="Der Vorname darf nur Buchstaben enthalten"/> <br>
+
+    Nachname: <input type="text" id="apellidos" required
+    pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ]+" minlength="2" maxlength="10"
+    title="Der Nachname darf nur Buchstaben enthalten"/> <br>
+
+    E-Mail: <input type="email" id="email" required
+    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+    title="Geben Sie eine gueltige E-Mail-Adresse ein (z.B.: benutzer@domain.com)"/> <br>
+
+    Passwort: <input type="password" id="pass" required 
+    minlength="8" maxlength="20"
+    title="Das Passwort muss zwischen 8 und 20 Zeichen lang sein"/> <br>
+
+    Telefon: <input type="text" id="telefono" required
+    pattern="[0-9]{9}" title="Muss genau 9 Ziffern enthalten"/> <br>
+
+    Adresse: <input type="text" id="direccion" required
+    pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\\s#\\-/]{5,100}"
+    minlength="5" maxlength="100"
+    title="Geben Sie Ihre Adresse ein (mindestens 5 Zeichen)"/> <br>
+
+    <input type="submit" value="REGISTRIEREN" />
+</form>

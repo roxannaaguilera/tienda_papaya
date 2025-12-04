@@ -1,0 +1,436 @@
+/* ============================================
+   ESTILOS PARA FORMULARIOS
+   ============================================ */
+
+/* Contenedor principal del formulario */
+.contenedor-formulario {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 130px);
+}
+
+/* Card del formulario */
+.formulario-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Header del formulario */
+.formulario-header {
+    background: #eb8124;
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+.header-icon {
+    width: 70px;
+    height: 70px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.header-icon svg {
+    color: #eb8124;
+}
+
+.formulario-header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+}
+
+.formulario-header p {
+    font-size: 16px;
+    opacity: 0.95;
+    margin: 0;
+}
+
+/* Formulario moderno */
+.formulario-moderno {
+    padding: 40px;
+}
+
+/* Secciones del formulario */
+.seccion-formulario {
+    margin-bottom: 35px;
+    padding-bottom: 35px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.seccion-formulario:last-of-type {
+    border-bottom: none;
+}
+
+.seccion-titulo {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2d2d2d;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.seccion-titulo svg {
+    color: #eb8124;
+}
+
+/* Grupos de formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d2d2d;
+    margin-bottom: 8px;
+}
+
+.form-group label svg {
+    color: #ffd43e;
+    flex-shrink: 0;
+}
+
+/* Inputs */
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #eb8124;
+    box-shadow: 0 0 0 4px rgba(235, 129, 36, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999;
+}
+
+/* Inputs con error */
+.input-error {
+    border-color: #ff4444 !important;
+}
+
+.input-error:focus {
+    box-shadow: 0 0 0 4px rgba(255, 68, 68, 0.1) !important;
+}
+
+/* Mensaje de error */
+.mensaje-error {
+    display: block;
+    color: #ff4444;
+    font-size: 13px;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+/* Layouts de formulario */
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-row-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Upload de archivos */
+.label-file {
+    cursor: pointer;
+}
+
+.file-upload-area {
+    border: 3px dashed #e0e0e0;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: #fafafa;
+}
+
+.file-upload-area:hover {
+    border-color: #eb8124;
+    background: #fff9f5;
+}
+
+.file-upload-area svg {
+    color: #eb8124;
+    margin-bottom: 15px;
+}
+
+.file-upload-area p {
+    color: #2d2d2d;
+    font-size: 15px;
+    margin: 0 0 8px 0;
+}
+
+.file-upload-area strong {
+    color: #eb8124;
+}
+
+.file-info {
+    display: block;
+    font-size: 13px;
+    color: #999;
+}
+
+.form-group input[type="file"] {
+    display: none;
+}
+
+/* Cuando se selecciona un archivo */
+.form-group input[type="file"]:valid + .label-file .file-upload-area {
+    border-color: #4caf50;
+    background: #f1f8f4;
+}
+
+/* Acciones del formulario */
+.formulario-acciones {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    padding-top: 20px;
+    margin-top: 30px;
+    border-top: 2px solid #f0f0f0;
+}
+
+/* Botones */
+.btn-principal,
+.btn-secundario {
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-principal {
+    background: #ce3524;
+    color: white;
+    box-shadow: 0 4px 15px rgba(206, 53, 36, 0.3);
+}
+
+.btn-principal:hover {
+    background: #b02d1f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(206, 53, 36, 0.4);
+}
+
+.btn-secundario {
+    background: white;
+    color: #666;
+    border: 2px solid #e0e0e0;
+}
+
+.btn-secundario:hover {
+    background: #f5f5f5;
+    border-color: #ccc;
+    transform: translateY(-2px);
+}
+
+/* Loading state para botones */
+.btn-principal:disabled,
+.btn-secundario:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Indicador de campo requerido */
+.form-group label::after {
+    content: '*';
+    color: #ce3524;
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+/* Preview de imagen (opcional) */
+.image-preview {
+    margin-top: 15px;
+    display: none;
+}
+
+.image-preview.active {
+    display: block;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .contenedor-formulario {
+        padding: 20px 10px;
+    }
+    
+    .formulario-header {
+        padding: 30px 20px;
+    }
+    
+    .formulario-header h1 {
+        font-size: 24px;
+    }
+    
+    .formulario-moderno {
+        padding: 25px 20px;
+    }
+    
+    .form-row-2,
+    .form-row-3 {
+        grid-template-columns: 1fr;
+    }
+    
+    .formulario-acciones {
+        flex-direction: column-reverse;
+    }
+    
+    .btn-principal,
+    .btn-secundario {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .file-upload-area {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .formulario-header {
+        padding: 25px 15px;
+    }
+    
+    .formulario-header h1 {
+        font-size: 20px;
+    }
+    
+    .formulario-header p {
+        font-size: 14px;
+    }
+    
+    .header-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .header-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .formulario-moderno {
+        padding: 20px 15px;
+    }
+    
+    .seccion-titulo {
+        font-size: 16px;
+    }
+}
+
+/* Animaciones */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.formulario-card {
+    animation: slideUp 0.4s ease;
+}
+
+/* Estados de validación visual */
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown) {
+    border-color: #4caf50;
+}
+
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown) {
+    border-color: #ff4444;
+}
+
+/* Tooltips informativos */
+.info-tooltip {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #ffd43e;
+    color: #2d2d2d;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: help;
+    line-height: 16px;
+    margin-left: 5px;
+}
+
+.info-tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    background: #2d2d2d;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    margin-top: 5px;
+    z-index: 100;
+}

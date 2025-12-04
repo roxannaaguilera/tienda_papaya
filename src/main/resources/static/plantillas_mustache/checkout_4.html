@@ -1,0 +1,178 @@
+<!-- Contenedor del Checkout Paso 4 - Resumen Final -->
+<div class="checkout-container" style="max-width: 900px; margin: 100px auto 40px; padding: 40px 20px;">
+
+    <!-- Header del checkout -->
+    <div class="checkout-header" style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 32px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px;">Resumen del Pedido</h2>
+        <p style="font-size: 16px; color: #666;">Revisa y confirma tu pedido</p>
+    </div>
+
+    <!-- Contenedor principal del resumen -->
+    <div class="checkout-form" style="background: #fff; border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+
+        <!-- SECCIÓN: PRODUCTOS DEL PEDIDO -->
+        <div class="resumen-seccion" style="margin-bottom: 32px; padding-bottom: 32px; border-bottom: 2px solid #f0f0f0;">
+            <h3 style="font-size: 20px; font-weight: 600; color: #1a1a1a; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ce3524" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                Productos del Pedido
+            </h3>
+            
+            <div id="productos_pedido" style="display: grid; gap: 16px;">
+                {{#alimentos}}
+                    <div class="item-producto" style="display: flex; align-items: center; gap: 16px; padding: 16px; background: #f8f9fa; border-radius: 12px; border: 1px solid #e9ecef;">
+                        <!-- Imagen del producto -->
+                        <div style="flex-shrink: 0;">
+                            <img src="mostrar_imagen?id={{ALIMENTO_ID}}" alt="{{NOMBRE}}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 2px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+                        </div>
+                        
+                        <!-- Info del producto -->
+                        <div style="flex: 1;">
+                            <div style="font-size: 16px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px;">{{NOMBRE}}</div>
+                            <div style="font-size: 14px; color: #666;">
+                                <span style="font-weight: 500;">Precio/unidad:</span> 
+                                <span class="precio-producto" data-precio="{{PRECIO}}" style="color: #eb8124; font-weight: 600;">{{PRECIO}} €</span>
+                            </div>
+                        </div>
+                    </div>
+                {{/alimentos}}
+            </div>
+        </div>
+
+        <!-- SECCIÓN: DATOS DE ENVÍO -->
+        <div class="resumen-seccion" style="margin-bottom: 32px; padding-bottom: 32px; border-bottom: 2px solid #f0f0f0;">
+            <h3 style="font-size: 20px; font-weight: 600; color: #1a1a1a; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ce3524" stroke-width="2">
+                    <rect x="1" y="3" width="15" height="13"></rect>
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                </svg>
+                Datos de Envío
+            </h3>
+            
+            <div style="background: #f8f9fa; border-radius: 12px; padding: 20px; border: 1px solid #e9ecef;">
+                <div style="display: grid; gap: 12px;">
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <span style="font-size: 14px; color: #666; min-width: 160px;">Método de envío:</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #1a1a1a;">{{metodoDeEnvio}}</span>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <span style="font-size: 14px; color: #666; min-width: 160px;">Costo de envío:</span>
+                        <span id="costo_envio_display" data-costo="{{costoEnvio}}" style="font-size: 14px; font-weight: 600; color: #eb8124;">{{costoEnvio}} €</span>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <span style="font-size: 14px; color: #666; min-width: 160px;">Tiempo estimado:</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #1a1a1a;">{{tiempoEstimadoEntrega}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN: DATOS DEL CLIENTE -->
+        <div class="resumen-seccion" style="margin-bottom: 32px; padding-bottom: 32px; border-bottom: 2px solid #f0f0f0;">
+            <h3 style="font-size: 20px; font-weight: 600; color: #1a1a1a; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ce3524" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Datos del Cliente
+            </h3>
+            
+            <div style="background: #f8f9fa; border-radius: 12px; padding: 20px; border: 1px solid #e9ecef;">
+                <div style="display: grid; gap: 12px;">
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <span style="font-size: 14px; color: #666; min-width: 120px;">Nombre:</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #1a1a1a;">{{nombreCompleto}}</span>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <span style="font-size: 14px; color: #666; min-width: 120px;">Apellidos:</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #1a1a1a;">{{apellidos}}</span>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <span style="font-size: 14px; color: #666; min-width: 120px;">Dirección:</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #1a1a1a;">{{direccion}}</span>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <span style="font-size: 14px; color: #666; min-width: 120px;">Provincia:</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #1a1a1a;">{{provincia}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN: DATOS DE PAGO -->
+        <div class="resumen-seccion" style="margin-bottom: 32px;">
+            <h3 style="font-size: 20px; font-weight: 600; color: #1a1a1a; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ce3524" stroke-width="2">
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg>
+                Datos de Pago
+            </h3>
+            
+            <div style="background: #f8f9fa; border-radius: 12px; padding: 20px; border: 1px solid #e9ecef;">
+                <div style="display: grid; gap: 12px;">
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <span style="font-size: 14px; color: #666; min-width: 140px;">Tipo de tarjeta:</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #1a1a1a; text-transform: uppercase;">{{tipoTarjeta}}</span>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <span style="font-size: 14px; color: #666; min-width: 140px;">Titular:</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #1a1a1a;">{{titularTarjeta}}</span>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <span style="font-size: 14px; color: #666; min-width: 140px;">Número de tarjeta:</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #1a1a1a; font-family: 'Courier New', monospace; letter-spacing: 1px;">**** **** **** {{numeroTarjeta}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DESGLOSE DE TOTALES -->
+        <div style="background: #f8f9fa; border-radius: 12px; padding: 24px; margin-bottom: 24px; border: 2px solid #ffd43e;">
+            <div style="display: grid; gap: 12px; margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 15px; color: #666;">Subtotal productos:</span>
+                    <span id="subtotal_productos" style="font-size: 15px; font-weight: 600; color: #1a1a1a;">0.00 €</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 15px; color: #666;">Envío:</span>
+                    <span id="subtotal_envio" style="font-size: 15px; font-weight: 600; color: #1a1a1a;">0.00 €</span>
+                </div>
+            </div>
+            <div style="border-top: 2px solid #e9ecef; padding-top: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 20px; font-weight: 700; color: #1a1a1a;">TOTAL:</span>
+                    <span id="total_pedido" style="font-size: 28px; font-weight: 700; color: #eb8124;">0.00 €</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTÓN DE CONFIRMACIÓN -->
+        <button 
+            type="button" 
+            id="boton_confirmar_pedido" 
+            style="width: 100%; padding: 18px 32px; font-size: 18px; font-weight: 700; border: none; border-radius: 10px; cursor: pointer; background: #ffd43e; color: #1a1a1a; display: flex; align-items: center; justify-content: center; gap: 12px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 212, 62, 0.4); text-transform: uppercase; letter-spacing: 0.5px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            CONFIRMAR PEDIDO
+        </button>
+
+        <!-- Nota de seguridad -->
+        <div style="text-align: center; margin-top: 24px; padding: 16px; background: #fff9e6; border-radius: 8px; border: 1px solid #ffd43e;">
+            <p style="font-size: 13px; color: #856404; margin: 0; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ce3524" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                Tu información está protegida y será procesada de forma segura
+            </p>
+        </div>
+
+    </div>
+
+</div>
