@@ -46,12 +46,7 @@ A web application developed with Java and Spring Boot for managing an online foo
 - Maven 3.8+
 - Database configured in `application.properties
 
-## How to Run
 
-Compile the project:
-
-```bash
-mvn clean install
 
 
 
